@@ -1,0 +1,25 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: employee-ui-ingress
+  namespace: employee
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-production
+spec:
+  ingressClassName: nginx
+  tls:
+  - hosts:
+      - employee-ui.sothy.tech
+    secretName: employee-ui-tls-certificate
+  rules:
+  - host: employee-ui.sothy.tech
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: employee-ui-service
+            port: 
+              number: 4200
+
