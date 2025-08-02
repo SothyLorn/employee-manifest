@@ -15,6 +15,6 @@ spec:
     spec:
       containers:
       - name: employee-api
-        image: sothy/employee-api:uat-6
+        image: sothy/employee-api:uat-11
         ports:
         - containerPort: 4000
