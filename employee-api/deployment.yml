@@ -4,7 +4,7 @@ metadata:
   name: employee-api
   namespace: employee
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
       app: employee-api
@@ -16,6 +16,13 @@ spec:
       containers:
       - name: employee-api
         image: sothy/employee-api:uat-13
+        resources:
+          requests:
+            cpu: 100m
+            memory: 100Mi
+          limits:
+            cpu: 150m
+            memory: 150Mi
         ports:
         - containerPort: 4000
         volumeMounts:
