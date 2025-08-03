@@ -18,3 +18,10 @@ spec:
         image: sothy/employee-api:uat-13
         ports:
         - containerPort: 4000
+        volumeMounts:
+        - name: demo-pv
+          mountPath: /app/Photos
+      volumes:
+        - name: demo-pv
+          persistentVolumeClaim:
+            claimName: nfs-pvc
